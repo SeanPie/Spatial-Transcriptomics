@@ -34,11 +34,11 @@ tissue <- subset(tissue, features = selected_f, cells = selected_c)
 tissue <- SCTransform(tissue, assay = 'Spatial', verbose = FALSE)
 
 p2 <- VlnPlot(tissue, features = "nCount_Spatial", pt.size = 0.1) + NoLegend()
-p2 <- p2 + xlab( "Male A Spots") + ggtitle("UMIs Per Spot") +ylab("UMIs") + theme(axis.text.x=element_blank(),
+p2 <- p2 + xlab( "Female B Spots") + ggtitle("UMIs Per Spot") +ylab("UMIs") + theme(axis.text.x=element_blank(),
                                                                                   axis.ticks.x=element_blank())
 
 p3 <- VlnPlot(tissue, features = "nFeature_Spatial", pt.size = 0.1) + NoLegend()
-p3 <- p3 + xlab( "Male A Spots") + ggtitle("Genes Per Spot") +ylab("Genes") + theme(axis.text.x=element_blank(),
+p3 <- p3 + xlab( "Female B Spots") + ggtitle("Genes Per Spot") +ylab("Genes") + theme(axis.text.x=element_blank(),
                                                                                     axis.ticks.x=element_blank())
 # Clustering
 tissue <- RunPCA(tissue, assay = "SCT", verbose = FALSE)
@@ -58,11 +58,11 @@ p1 <- SpatialDimPlot(tissue, label = TRUE, label.size = 3)
 
 # Check Clusters
 plotPCA <- DimPlot(tissue, reduction = "pca", label = TRUE, label.size = 5)
-plotPCA
+
 plotUMAP <- DimPlot(tissue, reduction = "umap", label = TRUE)
-plotUMAP
+
 plotTSNE <- DimPlot(tissue, reduction = 'tsne', label = TRUE)
-plotTSNE
+
 
 
 # Find Variable Features
